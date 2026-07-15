@@ -1,5 +1,6 @@
 # conftest.py
 import pytest
+from selenium import import webdriver
 
 def pytest_addoption(parser):
     parser.addoption(

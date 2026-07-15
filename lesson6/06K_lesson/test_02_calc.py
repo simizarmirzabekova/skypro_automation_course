@@ -37,9 +37,8 @@ def test_calculator():
 
         # 4. Ждем результата
         result_locator = (By.ID, "result")
-        # Ждем, пока текст изменится с дефолтного "0" на другой
-        wait.until(EC.text_to_be_present_in_element_value(result_locator, "15"))
-
+        wait.until(EC.text_to_be_present_in_element(result_locator, "15"))
+        result = driver.find_element(*result_locator).text
         # 5. Проверка
         result = driver.find_element(*result_locator).get_attribute("value")
         assert result == "15", f"Результат неверен: {result}"
