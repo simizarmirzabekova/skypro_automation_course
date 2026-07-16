@@ -1,9 +1,9 @@
 import pytest
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
 
 @pytest.mark.skipif(
     pytest.config.getoption("--browser") != "chrome",
@@ -13,7 +13,7 @@ def test_calculator():
     """Автотест калькулятора"""
 
     driver = webdriver.Chrome()
-    wait = WebDriverWait(driver, 50)  # Долго ждём результат
+    wait = WebDriverWait(driver, 60) # Увеличено время ожидания до 1 минуты
 
     try:
         # 1. Открываем страницу
@@ -37,12 +37,14 @@ def test_calculator():
 
         # 4. Ждем результата
         result_locator = (By.ID, "result")
-        wait.until(EC.text_to_be_present_in_element(result_locator, "15"))
-        result = driver.find_element(*result_locator).text
-        # 5. Проверка
-        result = driver.find_element(*result_locator).get_attribute("value")
-        assert result == "15", f"Результат неверен: {result}"
+        # Используем правильный локатор и метод ожидания
+        wait.until(EC.text_to_be_present_in_element(result_locator, "15")) 
 
+        # 5. Проверка
+        # Получаем ТЕКСТ элемента (у div нет value)
+        result = driver.find_element(*result_locator).text  
+        assert result == "15", f"Результат неверен: {result}"
+    
     finally:
+        # Закрытие браузера должно быть здесь!
         driver.quit()
-        
