@@ -1,4 +1,4 @@
-from smartphone import Smartphone
+from lesson3.smartphone import Smartphone
 
 catalog = [
     Smartphone(brand="Apple", model="iPhone 15 Pro", phone_number="+79123456789"),
