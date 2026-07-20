@@ -6,10 +6,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
-@pytest.mark.skipif(
-    pytest.config.getoption("--browser") != "firefox",
-    reason="Test requires FireFox"
-)
+
 def test_shop():
     """Автотест покупки"""
 

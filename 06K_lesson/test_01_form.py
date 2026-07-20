@@ -5,10 +5,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
-@pytest.mark.skipif(
-    not pytest.config.getoption("--browser") in ["edge", "safari"],
-    reason="Test requires Edge or Safari"
-)
+
 def test_form():
     """Автотест формы"""
 
