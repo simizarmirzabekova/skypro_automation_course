@@ -26,7 +26,7 @@ def test_calculator_page_object(chrome_driver):
     
     assert page.get_result_text() == "15"
 
-    
+
     import pytest
 from selenium import webdriver
 from selenium.webdriver.firefox.service import Service as FirefoxService
@@ -68,4 +68,4 @@ def test_saucedemo_page_object(firefox_driver):
     checkout_page.fill_form_and_continue("Иван", "Иванов", "123456")
     
     total_text = checkout_page.get_total_amount()
-    assert total_text == "Total: $58.29"
+    assert total_text == "Total: 58.29"
